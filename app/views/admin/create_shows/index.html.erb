@@ -1,0 +1,33 @@
+<%= form_tag admin_create_shows_path, :method => :post do %>
+  <h3>Create Shows</h3>
+  <div class="field">
+    <%= select_tag('auditorium_ids[]', option_groups_from_collection_for_select(Theatre.all, :auditoria, :info, :id, :name), :multiple => true) %>
+  </div>
+  <div class="field">
+    <%= select_tag(:movie_id, options_from_collection_for_select(Movie.order(:name), :id, :name)) %>
+  </div>
+
+  <div class="field">
+    <%= text_field_tag :from_date, nil, :placeholder => 'From Date' %>
+    <%= text_field_tag :till_date, nil, :placeholder => 'Till Date' %>
+  </div>
+
+  <table id="timings">
+    <tr>
+      <td>Start Time</td><td>End Time</td>
+    </tr>
+    <tr class="show_times">
+      <td><%= text_field_tag 'timings[0][start_time]' %></td>
+      <td><%= text_field_tag 'timings[0][end_time]' %></td>
+    </tr>
+  </table>
+  
+  <div class="field">
+    <%= button_to_function "Add More Timings", "add_timings()", :class => 'btn' %>
+  </div>
+
+  <div class="action">
+    <%= submit_tag "create", :class => 'btn btn-large btn-primary' %>
+  </div>
+
+<% end %>

@@ -1,0 +1,36 @@
+<h3>Account Information</h3>
+<table class="table table-striped">
+	<tr>
+		<th>Name</th><td><%= @user.name %></td>
+	</tr>
+	<tr>
+		<th>Email</th><td><%= @user.email_id %></td>
+	</tr>
+	<tr>
+		<th>Account Balance</th><td><%= @user.account_balance %></td>
+	</tr>
+  <tr>
+    <th>Account Number</th><td><%= @user.id %></td>
+  </tr>
+</table>
+<h4>Transactions</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Transaction Id</th>
+    <th>Type</th>
+    <th>Account Number</th>
+    <th>Amount Transferred</th>
+    <th>Purpose</th>
+    <th>Created At</th>
+  </tr>  
+  <% @transactions.each do |transaction| %>
+    <tr>
+    	<td><%= transaction[:id] %></td>
+    	<td><%= transaction[:type] %></td>
+    	<td><%= transaction[:account_no] %></td>
+    	<td><%= transaction[:amount] %></td>
+    	<td><%= transaction[:purpose] %></td>
+    	<td><%= transaction[:created_at] %></td>
+    </tr>
+  <% end %>
+</table>

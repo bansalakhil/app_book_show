@@ -1,0 +1,24 @@
+<h1>Listing theatres in <%= @city.info %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @theatres.each do |theatre| %>
+  <tr>
+    <td><%= theatre.name %></td>
+    <td><%= link_to 'Show', admin_city_theatre_path(@city, theatre) %></td>
+    <td><%= link_to 'Edit', edit_admin_city_theatre_path(@city, theatre) %></td>
+    <td><%= link_to 'Destroy', admin_city_theatre_path(@city, theatre), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Theatre', new_admin_city_theatre_path(@city) %> | 
+<%= link_to "Back to #{@city.name}", [:admin, @city] %>

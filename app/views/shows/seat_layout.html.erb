@@ -1,0 +1,25 @@
+<%= form_for @show, :url => {:action => :book_seats}, :html => {:method => :post} do |f| %>
+  <%= render "show_description" %>
+  <div > 
+    <table class="table table-bordered">
+      <% categorize(@seats).each do |seats| %>
+        <tr>
+          <td colspan="10"><%= seats[:category].capitalize %></td>
+        </tr>
+        <tr>
+          <% seats[:seats].each do |seat| %>
+            <td><%= seat.booked_for?(@show) ? "Booked" : check_box_tag('seats[][id]', seat.id, false, :class => 'seats', :price => seat.price_for(@show)) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
+    <div class = "total_price_container">
+      <p>Total price = Rs.<span id="total_price">0</span></p>
+    </div>
+
+    <div>
+      <%= submit_tag "Book", :id => "book", :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

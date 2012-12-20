@@ -1,0 +1,12 @@
+<p>
+  <b>Name:</b>
+  <%= @theatre.name %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_admin_city_theatre_path(@city, @theatre) %> |
+<%= link_to 'Back', admin_city_theatres_path(@city) %> |
+
+<%= link_to 'Auditoria', admin_theatre_auditoria_path(@theatre) %>

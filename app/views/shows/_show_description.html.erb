@@ -1,0 +1,4 @@
+<h3><%= @show.info %></h3>
+<p><%= "Booking Date: #{@show.on_date}" %></p>
+<p><%= "ShowTime: #{@show.start_time.strftime("%I:%M%p")} - #{@show.end_time.strftime("%I:%M%p")}" %></p>
+<p><%= "Movie: #{@show.movie.name}" %></p> 

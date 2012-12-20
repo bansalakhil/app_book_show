@@ -1,0 +1,12 @@
+<div>
+  <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
+  <%= form_tag(login_url, :method => :post, :class => 'form-info') do %>
+    <h2 class="form-info-heading">Please log In</h2>
+    <%= text_field_tag :name, nil, :class => 'input-block-level', :placeholder => 'User Name' %>
+    <%= password_field_tag :password, nil, :class => 'input-block-level', :placeholder => 'Password' %>
+    <%= submit_tag "LogIn", :class => 'btn btn-large btn-primary' %>
+    <%= link_to "Sign Up", new_account_path, :class => 'pull-right' %>
+  <% end %> 
+</div>

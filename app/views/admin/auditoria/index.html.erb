@@ -1,0 +1,24 @@
+<h1>Listing auditoria in <%= @theatre.info %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @auditoria.each do |auditorium| %>
+  <tr>
+    <td><%= auditorium.name %></td>
+    <td><%= link_to 'Show', admin_theatre_auditorium_path(@theatre, auditorium) %></td>
+    <td><%= link_to 'Edit', edit_admin_theatre_auditorium_path(@theatre, auditorium) %></td>
+    <td><%= link_to 'Destroy', admin_theatre_auditorium_path(@theatre, auditorium), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Auditorium', new_admin_theatre_auditorium_path(@theatre) %> |
+<%= link_to "Back to #{@theatre.info}", [:admin, @theatre.city, @theatre] %>

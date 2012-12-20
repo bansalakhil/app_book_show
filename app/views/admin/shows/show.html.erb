@@ -1,0 +1,22 @@
+<p>
+  Movie Name
+  <%= @show.movie.name %>
+</p>
+
+<p>
+  Date
+  <%= @show.on_date %>
+</p>
+
+<p>
+  Start_Time
+  <%= @show.start_time %>
+</p>
+
+<p>
+  End_Time
+  <%= @show.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_admin_auditorium_show_path(@auditorium, @show) %> |
+<%= link_to 'Back', admin_auditorium_shows_path(@auditorium) %>

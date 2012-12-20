@@ -1,0 +1,9 @@
+<p>
+  <b>Name:</b>
+  <%= @auditorium.name %>
+</p>
+
+<%= link_to 'Edit', edit_admin_theatre_auditorium_path(@theatre, @auditorium) %> |
+<%= link_to 'Back', admin_theatre_auditoria_path(@theatre) %> |
+
+<%= link_to 'Shows', admin_auditorium_shows_path(@auditorium) %>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <% unless flash[:hide_links] %>
+      <header class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <ul class="nav pull-right">
+              <% if session[:user_id] %>
+                <% if session[:admin] %>
+                  <li><%= link_to "Cities", admin_cities_path %></li>
+                  <li><%= link_to "Users", admin_users_path %></li>
+                  <li><%= link_to "Movies", admin_movies_path %></li>
+                  <li><%= link_to "Create Shows", admin_create_shows_path %></li>
+                <% end %>
+                <li><%= link_to "Account", account_path %></li>
+                <li><%= link_to "Log Out", logout_path, :method => :delete %></li>
+              <% else %>
+                <li><%= link_to "Log In", login_path %></li>
+                <li><%= link_to "Sign Up", new_account_path %></li>
+              <% end %>
+              <li><%= link_to "Search", search_path %></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <% end %>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert"><%= flash[:notice] %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+</html>

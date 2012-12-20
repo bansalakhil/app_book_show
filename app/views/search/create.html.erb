@@ -1,0 +1,15 @@
+<h2>Listing Shows for <%= @movie.name %> on <%= params[:search][:date] %></h2>
+<table class="table table-striped">
+  <% group_by_auditorium(@shows).each_value do |shows| %>
+    <tr>
+      <td>
+        <%= shows.pop %>
+      </td>
+      <% shows.each do |show| %>
+        <td>
+          <%= link_to_if show.can_be_booked?, link_text(show), seat_layout_show_path(show) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table> 

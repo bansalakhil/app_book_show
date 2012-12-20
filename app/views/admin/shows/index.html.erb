@@ -1,0 +1,26 @@
+<h1>Listing shows for <%= @auditorium.info %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Movie</th>
+    <th>Date</th>
+    <th>Start_Time</th>
+    <th>End_Time</th>
+  </tr>
+
+<% @shows.each do |show| %>
+  <tr>
+    <td><%= show.movie.name %></td>
+    <td><%= show.on_date %></td>
+    <td><%= show.start_time.strftime("%I:%M%p") %></td>
+    <td><%= show.end_time.strftime("%I:%M%p") %></td>
+    <td><%= link_to 'Show', [:admin, @auditorium, show] %></td>
+    <td><%= link_to 'Edit', edit_admin_auditorium_show_path(@auditorium, show) %></td>
+    <td><%= link_to 'Destroy', [:admin, @auditorium, show], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Show', new_admin_auditorium_show_path(@auditorium) %>

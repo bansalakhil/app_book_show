@@ -1,0 +1,13 @@
+<div>
+  <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
+  <%= form_for @account, :url => account_path, :method => :post, :html => {:class => 'form-info'} do |f| %>
+    <h2 class="form-info-heading">New User</h2>
+    <%= f.text_field :name, :class => 'input-block-level', :placeholder => 'User Name' %>
+    <%= f.password_field :password, :class => 'input-block-level', :placeholder => 'Password' %>
+    <%= f.password_field :password_confirmation, :class => 'input-block-level', :placeholder => 'Confirm Password' %>
+    <%= f.text_field :email_id, :class => 'input-block-level', :placeholder => 'Email Address' %>
+    <%= f.submit "Sign Up", :class => 'btn btn-large btn-primary' %>
+  <% end %> 
+</div>

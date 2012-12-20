@@ -1,0 +1,14 @@
+<%= form_tag(search_url, :method => :post, :class => 'form-info') do %>
+    <div >
+      <%= collection_select(:search, :city_id, @cities, :id, :name) %>
+    </div>
+    <div >
+      <%= collection_select(:search, :movie_id, @movies, :id, :name) %>
+    </div>
+    <div >
+      <%= collection_select(:search, :date, @dates, :on_date, :on_date) %>
+    </div>
+    <div>
+      <%= submit_tag "search", :class => 'btn btn-large btn-primary' %>
+    </div>
+<% end %>
